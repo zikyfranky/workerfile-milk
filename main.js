@@ -18,13 +18,13 @@ const main = async () => {
   const tokenID = process.env.TOKEN_ID;
 
   // Stake NFT
-  // await stakeNFT(tokenID).catch((e) => {
-  //   const errorBody = e.error.error.body;
-  //   const errorBodyJSON = JSON.parse(errorBody);
-  //   const errorMsg = errorBodyJSON.error.message;
-  //   console.log("Staking Failed: ", errorMsg);
-  //   process.exit(0);
-  // });
+  await stakeNFT(tokenID).catch((e) => {
+    const errorBody = e.error.error.body;
+    const errorBodyJSON = JSON.parse(errorBody);
+    const errorMsg = errorBodyJSON.error.message;
+    console.log("Staking Failed: ", errorMsg);
+    process.exit(0);
+  });
 
   let unstakeAt = (await stakingContract.unstakesAt(tokenID)).toNumber();
   if (unstakeAt == 0) return;
