@@ -29,8 +29,7 @@ const main = async () => {
   let unstakeAt = (await stakingContract.unstakesAt(tokenID)).toNumber();
   if (unstakeAt == 0) return;
 
-  // let unstakeMilli = unstakeAt * 1000 - Date.now() + 10000; // add 10 seconds to avoid errors
-  let unstakeMilli = 3000;
+  let unstakeMilli = unstakeAt * 1000 - Date.now() + 10000; // add 10 seconds to avoid errors
   let unstakeSecs = (unstakeMilli / 1000).toFixed();
 
   let waitInterval = setInterval(() => {
