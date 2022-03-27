@@ -34,8 +34,7 @@ const stakeNFT = async (tokenId) => {
 };
 
 const unstakeNFT = async (tokenId) => {
-  const tx = await stakingContract.exitForest(tokenId);
-  tx.wait();
+  await stakingContract.exitForest(tokenId);
 };
 
 module.exports = {
